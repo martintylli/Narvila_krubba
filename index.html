@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Christmas Gospel — Language Picker</title>
+  <style>
+    :root { --size: 110px; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:#0b0c10; color:#fff; display: grid; place-items: center;
+      min-height: 100svh; padding: 24px;
+    }
+    h1 { font-size: clamp(22px, 3.5vw, 34px); margin: 0 0 8px; font-weight: 700; text-align:center; }
+    p.lead { margin: 0 0 20px; opacity: .9; text-align:center; font-size: clamp(14px, 2.2vw, 18px); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(var(--size), 1fr));
+      gap: 18px; width: min(1000px, 100%);
+    }
+    .flag {
+      display: grid; place-items: center; aspect-ratio: 1/1; width: 100%;
+      font-size: 52px; text-decoration: none; border-radius: 22px;
+      background: #15171f; border: 1px solid #222633;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,.25);
+      position: relative; isolation: isolate;
+    }
+    .flag:hover, .flag:focus-visible {
+      transform: translateY(-3px);
+      border-color: #2c6cff;
+      box-shadow: 0 10px 26px rgba(44,108,255,.35);
+      outline: none;
+    }
+    .label {
+      position: absolute; bottom: 8px; left: 10px; right: 10px;
+      font-size: 12px; text-align: center; color: #cfd8ff; opacity: .95;
+    }
+    footer { opacity: .7; font-size: 12px; margin-top: 16px; text-align:center; }
+    .note { font-size: 12px; opacity: .75; margin-top: 6px; text-align:center; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Choose your language to watch the Christmas Gospel.</h1>
+    <p class="lead">Tap a flag to open the video in a new tab.</p>
+
+    <div class="grid" role="list">
+      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Finland video">
+        🇫🇮 <span class="label">Finland</span>
+      </a>
+
+      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Sweden video">
+        🇸🇪 <span class="label">Sweden</span>
+      </a>
+
+      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="English video">
+        🇺🇸 <span class="label">English</span>
+      </a>
+
+      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Germany video">
+        🇩🇪 <span class="label">Germany</span>
+      </a>
+
+      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Japan video">
+        🇯🇵 <span class="label">Japan</span>
+      </a>
+
+      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="China video">
+        🇨🇳 <span class="label">China</span>
+      </a>
+
+      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Egypt video">
+        🇪🇬 <span class="label">Egypt</span>
+      </a>
+
+      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Nigeria video">
+        🇳🇬 <span class="label">Nigeria</span>
+      </a>
+
+      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Kenya video">
+        🇰🇪 <span class="label">Kenya</span>
+      </a>
+
+      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="South Africa video">
+        🇿🇦 <span class="label">South Africa</span>
+      </a>
+    </div>
+
+    <footer>Tip: To add more, copy one <code>&lt;a class="flag"&gt;</code> block and change the label and URL.</footer>
+  </main>
+</body>
+</html>
