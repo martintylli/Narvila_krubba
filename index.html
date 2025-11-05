@@ -3,91 +3,253 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Christmas Gospel — Language Picker</title>
+  <title>Närvilä – Christmas Gospel Language Picker</title>
+  <meta name="description" content="Choose your language to watch the Christmas Gospel. Embedded YouTube player." />
   <style>
-    :root { --size: 110px; }
-    body {
-      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:#0b0c10; color:#fff; display: grid; place-items: center;
-      min-height: 100svh; padding: 24px;
+    /* --- Clean, simple style inspired by narvila.fi --- */
+    :root {
+      --maxw: 960px;
+      --gap: 16px;
+      --radius: 14px;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --link: #1d4ed8;
     }
-    h1 { font-size: clamp(22px, 3.5vw, 34px); margin: 0 0 8px; font-weight: 700; text-align:center; }
-    p.lead { margin: 0 0 20px; opacity: .9; text-align:center; font-size: clamp(14px, 2.2vw, 18px); }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: #ffffff;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(100% - 24px, var(--maxw));
+      margin-inline: auto;
+    }
+
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-size: clamp(20px, 3vw, 28px);
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-align: center;
+    }
+
+    main {
+      padding: 18px 0 28px;
+    }
+
+    .lead {
+      font-size: clamp(16px, 2.3vw, 18px);
+      color: var(--muted);
+      margin: 4px 0 18px;
+      text-align: center;
+    }
+
+    /* Player */
+    .player-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+    }
+
+    .player-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .placeholder {
+      text-align: center;
+      color: var(--muted);
+      padding: 12px;
+    }
+
+    /* Flags */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(var(--size), 1fr));
-      gap: 18px; width: min(1000px, 100%);
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--gap);
     }
+
     .flag {
-      display: grid; place-items: center; aspect-ratio: 1/1; width: 100%;
-      font-size: 52px; text-decoration: none; border-radius: 22px;
-      background: #15171f; border: 1px solid #222633;
-      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-      box-shadow: 0 6px 18px rgba(0,0,0,.25);
-      position: relative; isolation: isolate;
+      display: grid;
+      place-items: center;
+      gap: 6px;
+      padding: 14px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #ffffff;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: 0.12s ease;
+      user-select: none;
     }
-    .flag:hover, .flag:focus-visible {
-      transform: translateY(-3px);
-      border-color: #2c6cff;
-      box-shadow: 0 10px 26px rgba(44,108,255,.35);
-      outline: none;
+
+    .flag:hover {
+      border-color: #c7d2fe;
+      box-shadow: 0 6px 14px rgba(29,78,216,0.12);
+      transform: translateY(-2px);
     }
+
+    .emoji {
+      font-size: 40px;
+    }
+
     .label {
-      position: absolute; bottom: 8px; left: 10px; right: 10px;
-      font-size: 12px; text-align: center; color: #cfd8ff; opacity: .95;
+      font-size: 13px;
+      color: var(--muted);
     }
-    footer { opacity: .7; font-size: 12px; margin-top: 16px; text-align:center; }
-    .note { font-size: 12px; opacity: .75; margin-top: 6px; text-align:center; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+      padding: 12px 0;
+      font-size: 12px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      body { background: #0b0c10; color: #ffffff; }
+      header, footer { border-color: #20232d; }
+      .lead { color: #c9d1d9; }
+      .player-wrap { background: #11131a; border-color: #20232d; }
+      .flag { background: #11131a; border-color: #20232d; }
+      .label { color: #c9d1d9; }
+    }
   </style>
 </head>
+
 <body>
-  <main>
-    <h1>Choose your language to watch the Christmas Gospel.</h1>
-    <p class="lead">Tap a flag to open the video in a new tab.</p>
+  <header>
+    <div class="container">
+      <h1>Närvilä – Christmas Gospel</h1>
+    </div>
+  </header>
 
-    <div class="grid" role="list">
-      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Finland video">
-        🇫🇮 <span class="label">Finland</span>
-      </a>
+  <main class="container">
+    <p class="lead">
+      Choose your language to watch the Christmas Gospel. 
+      Click a flag below; the video will play here on the page.
+    </p>
 
-      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Sweden video">
-        🇸🇪 <span class="label">Sweden</span>
-      </a>
+    <!-- Player -->
+    <section class="player-wrap" id="player-wrap">
+      <div class="placeholder" id="placeholder">
+        Select a flag to load the video.
+      </div>
+    </section>
 
-      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="English video">
-        🇺🇸 <span class="label">English</span>
-      </a>
+    <!-- Flags -->
+    <div class="grid" id="flag-grid">
 
-      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Germany video">
-        🇩🇪 <span class="label">Germany</span>
-      </a>
+      <!-- Replace YOUTUBE_ID_x with real YouTube VIDEO IDs -->
+      <button class="flag" data-video="YOUTUBE_ID_FI">
+        <div class="emoji">🇫🇮</div>
+        <div class="label">Finland</div>
+      </button>
 
-      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Japan video">
-        🇯🇵 <span class="label">Japan</span>
-      </a>
+      <button class="flag" data-video="YOUTUBE_ID_SE">
+        <div class="emoji">🇸🇪</div>
+        <div class="label">Sweden</div>
+      </button>
 
-      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="China video">
-        🇨🇳 <span class="label">China</span>
-      </a>
+      <button class="flag" data-video="YOUTUBE_ID_EN">
+        <div class="emoji">🇺🇸</div>
+        <div class="label">English</div>
+      </button>
 
-      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Egypt video">
-        🇪🇬 <span class="label">Egypt</span>
-      </a>
+      <button class="flag" data-video="YOUTUBE_ID_DE">
+        <div class="emoji">🇩🇪</div>
+        <div class="label">Germany</div>
+      </button>
 
-      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Nigeria video">
-        🇳🇬 <span class="label">Nigeria</span>
-      </a>
+      <button class="flag" data-video="YOUTUBE_ID_JP">
+        <div class="emoji">🇯🇵</div>
+        <div class="label">Japan</div>
+      </button>
 
-      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="Kenya video">
-        🇰🇪 <span class="label">Kenya</span>
-      </a>
+      <button class="flag" data-video="YOUTUBE_ID_CN">
+        <div class="emoji">🇨🇳</div>
+        <div class="label">China</div>
+      </button>
 
-      <a class="flag" role="listitem" href="YOUTUBE_URL_HERE" target="_blank" rel="noopener" aria-label="South Africa video">
-        🇿🇦 <span class="label">South Africa</span>
-      </a>
+      <button class="flag" data-video="YOUTUBE_ID_EG">
+        <div class="emoji">🇪🇬</div>
+        <div class="label">Egypt</div>
+      </button>
+
+      <button class="flag" data-video="YOUTUBE_ID_NG">
+        <div class="emoji">🇳🇬</div>
+        <div class="label">Nigeria</div>
+      </button>
+
+      <button class="flag" data-video="YOUTUBE_ID_KE">
+        <div class="emoji">🇰🇪</div>
+        <div class="label">Kenya</div>
+      </button>
+
+      <button class="flag" data-video="YOUTUBE_ID_ZA">
+        <div class="emoji">🇿🇦</div>
+        <div class="label">South Africa</div>
+      </button>
+
     </div>
 
-    <footer> Närvilä Bönehus</footer>
+    <footer>
+      © Närvilä — Embedded YouTube Language Picker
+    </footer>
   </main>
+
+  <script>
+    const grid = document.getElementById('flag-grid');
+    const wrap = document.getElementById('player-wrap');
+    const placeholder = document.getElementById('placeholder');
+
+    function setVideo(id) {
+      if (!id || id.startsWith("YOUTUBE_ID_")) {
+        alert("Replace placeholders with real YouTube video IDs.");
+        return;
+      }
+
+      const src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+
+      const old = wrap.querySelector("iframe");
+      if (old) old.remove();
+
+      const iframe = document.createElement("iframe");
+      iframe.src = src;
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("allow", "autoplay; encrypted-media");
+      wrap.appendChild(iframe);
+
+      if (placeholder) placeholder.remove();
+    }
+
+    grid.addEventListener("click", (e) => {
+      const btn = e.target.closest(".flag");
+      if (!btn) return;
+      setVideo(btn.dataset.video);
+    });
+  </script>
+
 </body>
 </html>
