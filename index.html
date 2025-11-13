@@ -6,7 +6,6 @@
   <title>Närvilä – Christmas Gospel Language Picker</title>
   <meta name="description" content="Choose your language to watch the Christmas Gospel. Embedded YouTube player." />
   <style>
-    /* --- Clean, simple style inspired by narvila.fi --- */
     :root {
       --maxw: 960px;
       --gap: 16px;
@@ -147,7 +146,7 @@
 
   <main class="container">
     <p class="lead">
-      Choose your language to watch the Christmas Gospel. 
+      Choose your language to watch the Christmas Gospel.
       Click a flag below; the video will play here on the page.
     </p>
 
@@ -158,58 +157,97 @@
       </div>
     </section>
 
-    <!-- Flags -->
+    <!-- Flags – in the order you listed -->
     <div class="grid" id="flag-grid">
 
-      <!-- Replace YOUTUBE_ID_x with real YouTube VIDEO IDs -->
-      <button class="flag" data-video="YOUTUBE_ID_FI">
+      <!-- 1. Arab (Arabic) – Saudi Arabia -->
+      <button class="flag" data-video="YOUTUBE_ID_ARAB">
+        <div class="emoji">🇸🇦</div>
+        <div class="label">Arab</div>
+      </button>
+
+      <!-- 2. Hebrea (Hebrew) – Israel -->
+      <button class="flag" data-video="YOUTUBE_ID_HEBREA">
+        <div class="emoji">🇮🇱</div>
+        <div class="label">Hebrea</div>
+      </button>
+
+      <!-- 3. Ukraina -->
+      <button class="flag" data-video="YOUTUBE_ID_UKRAINA">
+        <div class="emoji">🇺🇦</div>
+        <div class="label">Ukraina</div>
+      </button>
+
+      <!-- 4. Suomi -->
+      <button class="flag" data-video="YOUTUBE_ID_SUOMI">
         <div class="emoji">🇫🇮</div>
-        <div class="label">Finland</div>
+        <div class="label">Suomi</div>
       </button>
 
-      <button class="flag" data-video="YOUTUBE_ID_SE">
-        <div class="emoji">🇸🇪</div>
-        <div class="label">Sweden</div>
+      <!-- 5. Spanska -->
+      <button class="flag" data-video="YOUTUBE_ID_SPANSKA">
+        <div class="emoji">🇪🇸</div>
+        <div class="label">Spanska</div>
       </button>
 
-      <button class="flag" data-video="YOUTUBE_ID_EN">
-        <div class="emoji">🇺🇸</div>
-        <div class="label">English</div>
+      <!-- 6. Franska -->
+      <button class="flag" data-video="YOUTUBE_ID_FRANSKA">
+        <div class="emoji">🇫🇷</div>
+        <div class="label">Franska</div>
       </button>
 
-      <button class="flag" data-video="YOUTUBE_ID_DE">
+      <!-- 7. Tyska -->
+      <button class="flag" data-video="YOUTUBE_ID_TYSKA">
         <div class="emoji">🇩🇪</div>
-        <div class="label">Germany</div>
+        <div class="label">Tyska</div>
       </button>
 
-      <button class="flag" data-video="YOUTUBE_ID_JP">
-        <div class="emoji">🇯🇵</div>
-        <div class="label">Japan</div>
+      <!-- 8. Karen – använder Myanmar-flagga som närmast -->
+      <button class="flag" data-video="YOUTUBE_ID_KAREN">
+        <div class="emoji">🇲🇲</div>
+        <div class="label">Karen</div>
       </button>
 
-      <button class="flag" data-video="YOUTUBE_ID_CN">
-        <div class="emoji">🇨🇳</div>
-        <div class="label">China</div>
+      <!-- 9. Amharic – Etiopien -->
+      <button class="flag" data-video="YOUTUBE_ID_AMHARIC">
+        <div class="emoji">🇪🇹</div>
+        <div class="label">Amharic</div>
       </button>
 
-      <button class="flag" data-video="YOUTUBE_ID_EG">
-        <div class="emoji">🇪🇬</div>
-        <div class="label">Egypt</div>
+      <!-- 10. Nepali – Nepal -->
+      <button class="flag" data-video="YOUTUBE_ID_NEPALI">
+        <div class="emoji">🇳🇵</div>
+        <div class="label">Nepali</div>
       </button>
 
-      <button class="flag" data-video="YOUTUBE_ID_NG">
+      <!-- 11. Venäjä (Russian) -->
+      <button class="flag" data-video="YOUTUBE_ID_VENAJÄ">
+        <div class="emoji">🇷🇺</div>
+        <div class="label">Venäjä</div>
+      </button>
+
+      <!-- 12. Norge -->
+      <button class="flag" data-video="YOUTUBE_ID_NORGE">
+        <div class="emoji">🇳🇴</div>
+        <div class="label">Norge</div>
+      </button>
+
+      <!-- 13. Engelska – USA -->
+      <button class="flag" data-video="YOUTUBE_ID_ENGELSKA">
+        <div class="emoji">🇺🇸</div>
+        <div class="label">Engelska</div>
+      </button>
+
+      <!-- 14. Igbo – Nigeria -->
+      <button class="flag" data-video="YOUTUBE_ID_IGBO">
         <div class="emoji">🇳🇬</div>
-        <div class="label">Nigeria</div>
+        <div class="label">Igbo</div>
       </button>
 
-      <button class="flag" data-video="YOUTUBE_ID_KE">
-        <div class="emoji">🇰🇪</div>
-        <div class="label">Kenya</div>
-      </button>
-
-      <button class="flag" data-video="YOUTUBE_ID_ZA">
-        <div class="emoji">🇿🇦</div>
-        <div class="label">South Africa</div>
+      <!-- 15. Svenska -->
+      <button class="flag" data-video="YOUTUBE_ID_SVENSKA">
+        <div class="emoji">🇸🇪</div>
+        <div class="label">Svenska</div>
       </button>
 
     </div>
