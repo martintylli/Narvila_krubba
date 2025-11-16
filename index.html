@@ -53,7 +53,6 @@
       text-align: center;
     }
 
-    /* Player */
     .player-wrap {
       position: relative;
       width: 100%;
@@ -79,7 +78,6 @@
       padding: 12px;
     }
 
-    /* Flags */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -116,6 +114,18 @@
       color: var(--muted);
     }
 
+    .btn-link {
+      display: inline-block;
+      background: #1d4ed8;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
     footer {
       border-top: 1px solid var(--border);
       margin-top: 24px;
@@ -125,7 +135,6 @@
       color: var(--muted);
     }
 
-    /* Dark mode */
     @media (prefers-color-scheme: dark) {
       body { background: #0b0c10; color: #ffffff; }
       header, footer { border-color: #20232d; }
@@ -157,26 +166,38 @@
       </div>
     </section>
 
+    <!-- Button under video -->
+    <div style="text-align:center;">
+      <a href="https://narvila.fi" target="_blank" class="btn-link">Visit narvila.fi</a>
+    </div>
+
     <!-- Flags in recommended order -->
-    <div class="grid" id="flag-grid">
+    <div class="grid" id="flag-grid" style="margin-top:25px;">
 
-<!-- English -->
-<button class="flag" data-video="wiJoao05PuU">
-  <div class="emoji">🇺🇸</div>
-  <div class="label">English</div>
-</button>
+      <!-- 1. English -->
+      <button class="flag" data-video="YOUTUBE_ID_ENGLISH">
+        <div class="emoji">🇺🇸</div>
+        <div class="label">English</div>
+      </button>
 
-<!-- Finnish -->
-<button class="flag" data-video="wiJoao05PuU">
-  <div class="emoji">🇫🇮</div>
-  <div class="label">Finnish</div>
-</button>
+      <!-- 2. Finnish -->
+      <button class="flag" data-video="wiJoao05PuU">
+        <div class="emoji">🇫🇮</div>
+        <div class="label">Finnish</div>
+      </button>
 
-<!-- Swedish -->
-<button class="flag" data-video="wiJoao05PuU">
-  <div class="emoji">🇸🇪</div>
-  <div class="label">Swedish</div>
-</button>
+      <!-- 3. Swedish -->
+      <button class="flag" data-video="wiJoao05PuU">
+        <div class="emoji">🇸🇪</div>
+        <div class="label">Swedish</div>
+      </button>
+
+      <!-- 4. Norwegian -->
+      <button class="flag" data-video="YOUTUBE_ID_NORWEGIAN">
+        <div class="emoji">🇳🇴</div>
+        <div class="label">Norwegian</div>
+      </button>
+
       <!-- 5. German -->
       <button class="flag" data-video="YOUTUBE_ID_GERMAN">
         <div class="emoji">🇩🇪</div>
@@ -257,7 +278,7 @@
 
     function setVideo(id) {
       if (!id || id.startsWith("YOUTUBE_ID_")) {
-        alert("Replace placeholders with real YouTube video IDs.");
+        alert("This language does not have a video yet.");
         return;
       }
 
